@@ -10,6 +10,10 @@ public class NukeProjectile : Projectile
         {
             GameManager.instance.Score += PointsForDestroy;
         }
+        else
+        {
+            GameManager.instance.statistics.NukesReachedTarget++;
+        }
         base.OnTriggerEnter2D(collision);
         
     }

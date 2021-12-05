@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AntiAirGun : MonoBehaviour
+public class AntiAirGun : Building
 {
-    public bool destroyed;
     public Transform firePoint;
     public GameObject projectile;
     public int maxAmmo = 10;
@@ -25,7 +24,6 @@ public class AntiAirGun : MonoBehaviour
     private List<GameObject> ammoObjects;
     void Start()
     {
-        CreateAmmoObjects();
         SetAmmo(maxAmmo);
     }
 
@@ -35,10 +33,12 @@ public class AntiAirGun : MonoBehaviour
         var gameObject = Instantiate(projectile, firePoint.position, Quaternion.identity);
         gameObject.GetComponent<AntiAirProjectile>().Setup(destination);
         CurrentAmmo--;
+        GameManager.instance.statistics.AntiAirFired++;
     }
 
     void SetAmmo(int ammo)
     {
+        if (ammoObjects == null) CreateAmmoObjects();
 
         currentAmmo = ammo % (maxAmmo + 1);
         for (int i = 0; i < ammoObjects.Count; i++)
@@ -52,6 +52,8 @@ public class AntiAirGun : MonoBehaviour
     }
     public void RestockAmmo()
     {
+        
+
         SetAmmo(maxAmmo);
     }
     void CreateAmmoObjects()

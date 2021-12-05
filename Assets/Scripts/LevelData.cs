@@ -9,5 +9,5 @@ public class LevelData : ScriptableObject
     public int launchInterval = 5;
     public int additional_missiles = 3;
     public bool restockAmmo = false;
-    public bool rebuildCities = false; 
+    public bool repair = false; 
 }

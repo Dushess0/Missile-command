@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc828c9aceeadb644b414083bb2a89fc, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  initialWave: 15
+  initialWave: 2
   launchInterval: 5
   additional_missiles: 3
   restockAmmo: 0

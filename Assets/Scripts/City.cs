@@ -1,19 +1,9 @@
 ﻿using UnityEngine;
-public class City : MonoBehaviour
+public class City : Building
 {
-    private bool destroyed = false;
-    public bool Destroyed { get => destroyed; set => SetDestroyed(value); }
-    
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        SetDestroyed(true);
+        base.OnTriggerEnter2D(collision);
+        GameManager.instance.statistics.CitiesDestroyed++;
     }
-    private void SetDestroyed(bool destroyed)
-    {
-        this.destroyed = destroyed;
-        gameObject.SetActive(!destroyed);
-    }
-    
-
 }
