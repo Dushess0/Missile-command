@@ -16,4 +16,4 @@ MonoBehaviour:
   launchInterval: 5
   additional_missiles: 3
   restockAmmo: 0
-  rebuildCities: 0
+  repair: 0

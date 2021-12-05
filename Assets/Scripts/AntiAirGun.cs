@@ -4,9 +4,8 @@ using UnityEngine;
 public class AntiAirGun : Building
 {
     public Transform firePoint;
-    public GameObject projectile;
+    public AntiAirProjectile projectile;
     public int maxAmmo = 10;
-    private int currentAmmo;
     public int CurrentAmmo
     {
         get => currentAmmo;
@@ -15,13 +14,14 @@ public class AntiAirGun : Building
             SetAmmo(value);
         }
     }
-    public GameObject ammoStartPoint;
-    public int ammoStacking = 5;
-    [SerializeField]
-    float ammoHorizontalInterval;
-    [SerializeField]
-    public float ammoVerticalInterval;
+
+    private int currentAmmo;
     private List<GameObject> ammoObjects;
+    [SerializeField] int ammoStacking = 5;
+    [SerializeField] GameObject ammoStartPoint;
+    [SerializeField] float ammoHorizontalInterval;
+    [SerializeField] float ammoVerticalInterval;
+
     void Start()
     {
         SetAmmo(maxAmmo);
@@ -52,8 +52,6 @@ public class AntiAirGun : Building
     }
     public void RestockAmmo()
     {
-        
-
         SetAmmo(maxAmmo);
     }
     void CreateAmmoObjects()

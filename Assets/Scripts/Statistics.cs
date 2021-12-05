@@ -8,5 +8,4 @@ public struct Statistics
     public int NukesReachedTarget;
     public int AntiAirFired;
     public int CitiesDestroyed;
-    
 }

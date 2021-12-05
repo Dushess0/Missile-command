@@ -20,39 +20,28 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int currentLevel = 0;
 
-
-
-
     private void Awake()
     {
         if (instance == null) instance = this;
         else if (instance != this) Destroy(gameObject);
     }
+
     void Start()
     {
         StartNewGame();
     }
+
     void StartLevel()
     {
-        LevelData level;
-        if (currentLevel >= levels.Length)
-        {
-            level = ScriptableObject.CreateInstance<LevelData>();
-            level.additional_missiles = Random.Range(6,10);
-            level.initialWave = Random.Range(2, 10);
-            level.launchInterval = Random.Range(1, 2);
-            level.repair = currentLevel % 10 == 0;
-            level.restockAmmo = currentLevel % 5 == 0;
-        }
-        else
-        {
-            level = levels[currentLevel];
-        }
+        LevelData level = currentLevel >= levels.Length 
+            ? CreateRandomLevel()
+            : levels[currentLevel];
+
         uIManager.AnounceLevel(currentLevel + 1, level);
-        if (level.restockAmmo)
-        {
-            foreach (AntiAirGun gun in guns) gun.RestockAmmo();
-        }
+
+        if (level.restockAmmo) foreach (AntiAirGun gun in guns) gun.RestockAmmo();
+
+
         if (level.repair)
         {
             foreach (var gun in guns) gun.Destroyed = false;
@@ -66,8 +55,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < level.additional_missiles; i++)
         {
             StartCoroutine(SpawnNuke(level.launchInterval * i));
-
         }
+
         StartCoroutine(EndLevel(level.launchInterval * level.additional_missiles + 5));
     }
     IEnumerator EndLevel(float delay)
@@ -75,10 +64,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         currentLevel++;
-        foreach (AntiAirGun gun in guns)
-        {
-            Score += gun.CurrentAmmo * 50;
-        }
+        foreach (AntiAirGun gun in guns) Score += gun.CurrentAmmo * gun.projectile.PointsForUnused;
 
         int citiesAlive = cities.Where(city => city.Destroyed == false).Count();
         if (citiesAlive == 0)
@@ -87,7 +73,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Score += citiesAlive * 50;
+            Score += citiesAlive * City.PointsForSaving;
             StartLevel();
         }
 
@@ -128,8 +114,15 @@ public class GameManager : MonoBehaviour
         uIManager.HideGameEnd();
         StartLevel();
     }
-
-
-
+    LevelData CreateRandomLevel()
+    {
+        LevelData level = ScriptableObject.CreateInstance<LevelData>();
+        level.additional_missiles = Random.Range(6, 10);
+        level.initialWave = Random.Range(2, 10);
+        level.launchInterval = Random.Range(1, 2);
+        level.repair = currentLevel % 10 == 0;
+        level.restockAmmo = currentLevel % 5 == 0;
+        return level;
+    }
 
 }

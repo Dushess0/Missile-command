@@ -129,12 +129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc87bcea91b42e49981733c42938dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyed: 0
   firePoint: {fileID: 4231814603621470919}
-  projectile: {fileID: 1616948943976767957, guid: e302638610952e94b85cb45782d152a6, type: 3}
+  projectile: {fileID: 2735711459040970441, guid: e302638610952e94b85cb45782d152a6, type: 3}
   maxAmmo: 10
-  ammoStartPoint: {fileID: 8238535712765297158}
   ammoStacking: 5
+  ammoStartPoint: {fileID: 8238535712765297158}
   ammoHorizontalInterval: -0.52
   ammoVerticalInterval: 0.2
 --- !u!50 &7767636708787876087
