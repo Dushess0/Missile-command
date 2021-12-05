@@ -48,18 +48,17 @@ public class AntiAirGun : Building
             else
                 ammoObjects[i].SetActive(false);
         }
-
     }
+
     public void RestockAmmo()
     {
         SetAmmo(maxAmmo);
     }
+
     void CreateAmmoObjects()
     {
-
         int fullstacks = maxAmmo / ammoStacking;
         int remains = maxAmmo - ammoStacking * fullstacks;
-        int columns = remains == 0 ? fullstacks : fullstacks + 1;
         ammoObjects = new List<GameObject>();
         for (int i = 0; i < fullstacks; i++)
         {

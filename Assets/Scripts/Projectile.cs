@@ -22,7 +22,6 @@ public class Projectile : MonoBehaviour
         float time = direction.magnitude / (speed);
         Invoke("Explode", time);
     }
-
     void Update()
     {
         transform.Translate(Vector3.right * Time.deltaTime * speed);

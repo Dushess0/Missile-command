@@ -9,34 +9,22 @@ public class PlayerController : MonoBehaviour
 
     private PlayerControls playerControls;
     public List<AntiAirGun> guns;
-    // Start is called before the first frame update
     void Start()
     {
         ChangeCursor();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (playerControls.Default.FireLeft.triggered)
-        {
-            Fire(0);
-        }
-        if (playerControls.Default.FireMiddle.triggered)
-        {
-            Fire(1);
-        }
-        if (playerControls.Default.FireRight.triggered)
-        {
-            Fire(2);
-        }
+        if (playerControls.Default.FireLeft.triggered) Fire(0);
+        if (playerControls.Default.FireMiddle.triggered) Fire(1);
+        if (playerControls.Default.FireRight.triggered) Fire(2);
+
     }
     public void Awake()
     {
         playerControls = new PlayerControls();
         ChangeCursor();
-
-      
     }
     private void OnEnable()
     {
@@ -48,7 +36,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Fire(int index)
     {
-        var position =  Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        var position = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         guns[index].Fire(position);
     }
     void ChangeCursor()
