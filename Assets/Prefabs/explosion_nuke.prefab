@@ -67,5 +67,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: explosion_nuke
       objectReference: {fileID: 0}
+    - target: {fileID: 8527374565331110911, guid: 7daf3e36526986d41bfcb357857c126a, type: 3}
+      propertyPath: duration
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7daf3e36526986d41bfcb357857c126a, type: 3}

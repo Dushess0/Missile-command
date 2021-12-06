@@ -29,7 +29,7 @@ public class AntiAirGun : Building
 
     public void Fire(Vector2 destination)
     {
-        if (currentAmmo <= 0) return;
+        if (currentAmmo <= 0 || Destroyed) return;
         var gameObject = Instantiate(projectile, firePoint.position, Quaternion.identity);
         gameObject.GetComponent<AntiAirProjectile>().Setup(destination);
         CurrentAmmo--;

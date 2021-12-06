@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1741954374946069420}
   - component: {fileID: 3910188743044200354}
   - component: {fileID: 5144083979287983373}
-  - component: {fileID: -7730258157586650116}
   - component: {fileID: -1874101677759562889}
   - component: {fileID: -8168416042260104074}
+  - component: {fileID: 8527374565331110911}
   m_Layer: 10
   m_Name: explosion_air
   m_TagString: Untagged
@@ -105,19 +105,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-7730258157586650116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7782755626724289520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a974818d77c5da14083534bdc1d876bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 2
 --- !u!58 &-1874101677759562889
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -155,3 +142,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8527374565331110911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7782755626724289520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42789d9013b8d546a313966d3599786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 1.5
